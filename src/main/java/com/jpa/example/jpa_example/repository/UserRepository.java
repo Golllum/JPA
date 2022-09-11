@@ -1,0 +1,11 @@
+package com.jpa.example.jpa_example.repository;
+
+import com.jpa.example.jpa_example.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, String> {
+    List<User> findUserByUserName(String name);
+}
