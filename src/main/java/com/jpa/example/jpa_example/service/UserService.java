@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import javax.swing.text.html.Option;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +16,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public User save(User user){
-        if(user.getId().isEmpty()){
+        if(user.getUserId().isEmpty()){
             throw new EntityNotFoundException("UserId is essential!");
         }
 
@@ -50,11 +48,11 @@ public class UserService {
     }
 
     public User update(User user){
-        if(user.getId().isEmpty()){
+        if(user.getUserId().isEmpty()){
             throw new EntityNotFoundException("UserId is essential!");
         }
 
-        Optional<User> optionalUser = userRepository.findById(user.getId());
+        Optional<User> optionalUser = userRepository.findById(user.getUserId());
 
         if(!optionalUser.isPresent()){
             throw new EntityNotFoundException("User Not Found!");
